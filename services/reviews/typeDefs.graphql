@@ -1,0 +1,32 @@
+type Review @key(fields: "id") {
+  id: ID!
+  body: String
+  author: User @provides(fields: "username")
+  product: Product
+}
+
+input AddReviewInput {
+  authorID: ID!
+  productUpc: String!
+  body: String!
+}
+
+type Mutation {
+  addReview(input: AddReviewInput!): Review
+}
+
+type Subscription {
+  reviewAdded: Review
+}
+
+extend type User @key(fields: "id") {
+  id: ID! @external
+  username: String @external
+  reviews: [Review]
+  numberOfReviews: Int
+}
+
+extend type Product @key(fields: "upc") {
+  upc: String! @external
+  reviews: [Review]
+}

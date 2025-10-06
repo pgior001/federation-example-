@@ -1,0 +1,15 @@
+{
+	"extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node22/tsconfig"],
+	"mdx": {
+		// This config is used by the VSCode MDX extension
+		// This list should match the list of plugins in the package.json
+		// https://github.com/mdx-js/mdx-analyzer/tree/main/packages/vscode-mdx#plugins
+		"plugins": [
+			"remark-preset-lint-consistent",
+			"remark-preset-lint-recommended",
+			"remark-preset-lint-markdown-style-guide",
+			"remark-preset-prettier",
+			"remark-gfm"
+		]
+	}
+}
